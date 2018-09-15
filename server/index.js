@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send({hi: 'Oyelowo'});
+    res.send({yes: 'Oyelowo is cool, calm and collected'});
 });
 
 
