@@ -9,7 +9,7 @@ module.exports = app => {
             .charges
             .create({amount: 1000, currency: 'usd', description: '$10 for 10 credits', source: req.body.id});
 
-        req.user.credits += 5;
+        req.user.credits += 10;
         const user = await req
             .user
             .save();
