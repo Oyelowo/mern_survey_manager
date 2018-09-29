@@ -9,7 +9,9 @@ module.exports = app => {
         const {title, subject, body, recipients} = req.body;
         const recipientsObjectArray = recipients
             .split(',')
-            .map(email => ({email}));
+            .map(email => ({
+                email: email.trim()
+            }));
         const survey = new Survey({
             title,
             subject,
