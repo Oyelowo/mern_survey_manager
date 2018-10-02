@@ -25,16 +25,16 @@ class Mailer extends helper.Mail {
 
     addClickTracking(){
         const trackingSettings = new helper.TrackingSettings();
-        const clickTrackiing = new helper.ClickTracking(true, true);
+        const clickTracking = new helper.ClickTracking(true, true);
 
-        trackingSettings.setClickTracking(clickTrackiing);
+        trackingSettings.setClickTracking(clickTracking);
         this.addTrackingSettings(trackingSettings);
     }
 
     addRecipients(){
         const personalize = new helper.Personalization();
-        this.recipients.forEach(recipients => {
-            personalize.addTo(recipients);
+        this.recipients.forEach(recipient => {
+            personalize.addTo(recipient);
         });
         this.addPersonalization(personalize);
     }
@@ -42,7 +42,7 @@ class Mailer extends helper.Mail {
     async send(){
         const request = this.sendgridApi.emptyRequest({
             method: 'POST',
-            path: 'v3/mail/send',
+            path: '/v3/mail/send',
             body: this.toJSON()
         });
 
