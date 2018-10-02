@@ -7,7 +7,7 @@ class Mailer extends helper.Mail {
         super();
 
         this.sendgridApi = sendgrid(keys.sendGridKey);
-        this.from_email = new helper.Email('no-reply@survey-manager.com');
+        this.from_email = new helper.Email('no-reply@surveyManager.com');
         this.subject = subject;
         this.body = new helper.Content('text/html', content);
         this.recipients = this.formatAddresses(recipients);
@@ -46,7 +46,7 @@ class Mailer extends helper.Mail {
             body: this.toJSON()
         });
 
-        const response = this.sendgridApi.API(request);
+        const response = await this.sendgridApi.API(request);
         return response;
     }
 };
