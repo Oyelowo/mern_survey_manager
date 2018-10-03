@@ -1,11 +1,18 @@
 // logic to render a single label and text input
 import React from 'react';
 
-export default({input, label}) => {
+export default({
+    input,
+    label,
+    meta: {
+        touched,
+        error
+    }
+}) => {
     return (
         <div>
             <label>{label}</label>
-            <input {...input}/>
+            <input {...input}/> {touched && error}
         </div>
     );
 };
