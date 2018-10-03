@@ -6,11 +6,6 @@ const fetchAlbums = async() => {
     console.log(json);
 }
 
-// function fetchAlbums  () {
-// fetch('https://rallycoding.herokuapp.com/api/music_albums')     .then(res=>
-// res.json())     .then(json=> console.log(json)); }
-
-console.log(fetchAlbums());
 
 const palinodrome = (str) => str === reverseStr(str);
 
