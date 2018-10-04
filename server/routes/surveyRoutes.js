@@ -17,19 +17,18 @@ module.exports = app => {
 
 	app.post('/api/surveys/webhooks', (req, res) => {
 		const p = new Path('/api/surveys/:surveyId/:choice');
-		
-		const events = req.body.map(({ url, email }) => {
-			const pathname = new URL(url).pathname;
-			const match = p.test(pathname);
-			if (match) {
-				return { email, surveyId: match.surveyId, choice: match.choice };
-			}
-		});
-		const compactEvents = _.compact(events);
-		const uniqueEvents = _.unionBy(compactEvents, 'email', 'surveyId');
-		console.log('uniqueEvents', uniqueEvents);
+		const events = _.chain(req.body)
+			.map(({ url, email }) => {
+				const match = p.test(new URL(url).pathname);
+				if (match) {
+					return { email, surveyId: match.surveyId, choice: match.choice };
+				}
+			})
+			.compact()
+			.unionBy('email', 'surveyId')
+			.value();
+		console.log('uniqueEvents', events);
 		res.send({});
-		
 	});
 
 	app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
