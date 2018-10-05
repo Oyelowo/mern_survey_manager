@@ -22,12 +22,12 @@ class Header extends Component {
     render() {
         return (
             <nav>
-                <div className="nav-wrapper">
+                <div className="nav-wrapper  indigo">
                     <Link
                         to={this.props.auth
                         ? '/surveys'
                         : '/'}
-                        className="left brand-logo">Survey Manager</Link>
+                        className="left brand-logo hide-on-med-and-down">Survey Manager</Link>
                     <ul className="right">
                         {this.renderContent()}
 
